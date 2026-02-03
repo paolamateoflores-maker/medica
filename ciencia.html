@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convocatorias - Clubes de Ciencia Médica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        
+        .social-call {
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .convocatorias-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .convocatoria {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .convocatoria:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .convocatoria-header {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .date-circle {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .day {
+            font-size: 1.8rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .convocatoria-title {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .convocatoria-date {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+        
+        .convocatoria-body {
+            padding: 25px;
+        }
+        
+        .convocatoria-description {
+            color: #34495e;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .info-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .info-button:hover {
+            background: #2980b9;
+        }
+        
+        .volunteer-convocatoria {
+            border-left-color: #2ecc71;
+        }
+        
+        .volunteer-convocatoria .date-circle {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+        
+        .volunteer-convocatoria .info-button {
+            background: #2ecc71;
+        }
+        
+        .volunteer-convocatoria .info-button:hover {
+            background: #27ae60;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .footer-tagline {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .contact-email {
+            font-size: 1.1rem;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-email a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .contact-email a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .convocatoria-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 15px;
+            }
+            
+            .date-circle {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>¡Convocatorias!</h1>
+            <p class="tagline">¿Quieres ser parte de Clubes de Ciencia Médica?</p>
+            <p class="tagline">Te invitamos a participar en la modalidad de instructor, estudiante o voluntario.</p>
+            <p class="social-call">¡Síguenos en nuestras redes sociales donde constantemente anunciamos nuestras convocatorias y próximos eventos!</p>
+        </header>
+        
+        <div class="content">
+            <div class="convocatorias-grid">
+                <!-- Convocatoria 1: Instructores -->
+                <div class="convocatoria">
+                    <div class="convocatoria-header">
+                        <div class="date-circle">
+                            <span class="day">6</span>
+                            <span class="month">Enero</span>
+                        </div>
+                        <div>
+                            <h3 class="convocatoria-title">Convocatoria de instructores</h3>
+                            <p class="convocatoria-date">DE UN MES DE 2022 – 27 DE ENERO DE 2023</p>
+                        </div>
+                    </div>
+                    <div class="convocatoria-body">
+                        <p class="convocatoria-description">
+                            Buscamos estudiantes de posgrado y postdoctorales en campos relacionados con áreas STEM, habilidades e instituciones de investigación o con experiencia previa en investigación.
+                        </p>
+                        <button class="info-button">MÁS INFORMACIÓN</button>
+                    </div>
+                </div>
+                
+                <!-- Convocatoria 2: Estudiantes -->
+                <div class="convocatoria">
+                    <div class="convocatoria-header">
+                        <div class="date-circle">
+                            <span class="day">20</span>
+                            <span class="month">Abril</span>
+                        </div>
+                        <div>
+                            <h3 class="convocatoria-title">Convocatoria de estudiantes</h3>
+                            <p class="convocatoria-date">PÁGINA INTERACTIVA: 20 ABRIL – 15 DE MAYO DE 2023</p>
+                        </div>
+                    </div>
+                    <div class="convocatoria-body">
+                        <p class="convocatoria-description">
+                            Dirigida a estudiantes de los últimos años del bachillerato y los primeros semestres de la licenciatura en Medicina.
+                        </p>
+                        <button class="info-button">MÁS INFORMACIÓN</button>
+                    </div>
+                </div>
+                
+                <!-- Convocatoria 3: Voluntarios -->
+                <div class="convocatoria volunteer-convocatoria">
+                    <div class="convocatoria-header">
+                        <div class="date-circle">
+                            <span class="day">-</span>
+                            <span class="month">-</span>
+                        </div>
+                        <div>
+                            <h3 class="convocatoria-title">Convocatoria de voluntariado para staff durante los Clubes</h3>
+                            <p class="convocatoria-date">PÚBLICAMENTE AVAILABLE UNDERGRADUATE</p>
+                        </div>
+                    </div>
+                    <div class="convocatoria-body">
+                        <p class="convocatoria-description">
+                            Buscamos voluntarios que residan en alguna de nuestras sedes y estén interesados en apoyar en la organización de los clubes en la parte operativa durante el evento.
+                        </p>
+                        <button class="info-button">MÁS INFORMACIÓN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p class="footer-tagline">Apoya nuestra misión.<br>Únete a la revolución de la educación científica</p>
+            
+            <div class="contact-email">
+                <p>Email: <a href="mailto:contacto@clubesdedocencia.mx">contacto@clubesdedocencia.mx</a></p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Agregar funcionalidad a los botones
+        document.querySelectorAll('.info-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const convocatoriaTitle = this.closest('.convocatoria').querySelector('.convocatoria-title').textContent;
+                alert(`Información detallada sobre: "${convocatoriaTitle}"\n\nPara más información, contacta a: contacto@clubesdedocencia.mx`);
+            });
+        });
+    </script>
+</body>
+</html>
